@@ -27,3 +27,9 @@ Check it out on https://github.com/DanielChuDC/multiarch-vagrant-rhel
 3. Provision server by `vagrant up`
 
 
+### Prerequisite
+1. REDHAT DEVELOPER ACCOUNT
+   - If you encouter password error, probably your password has special character. In this case, you may want to change the password or using the activation key.
+   - if you want to use activation key, can try this https://access.redhat.com/solutions/3341191 , https://access.redhat.com/articles/1378093
+
+2. DOCKER HUB ACCOUNT

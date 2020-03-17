@@ -45,7 +45,6 @@ sudo usermod -aG docker vagrant
 echo "getting root permission"
 export DOCKER_CLI_EXPERIMENTAL=enabled
 
-
 echo "Install qemu for RHEL 8"
 sudo yum install qemu-kvm -y
 echo "Checking qemu version"
@@ -103,22 +102,9 @@ echo "Creating a Buildx Builder"
 docker buildx create --use --name mybuilder
 docker buildx inspect --bootstrap
 docker buildx ls
-docker buildx use default 
-docker buildx inspect --bootstrap
-docker buildx ls
-
-
-echo "Restart docker one more time to ensure the docker buildx functioning"
-sudo systemctl restart docker
-docker buildx use default 
-docker buildx inspect --bootstrap
-docker buildx ls
-docker buildx use mybuilder
-docker buildx inspect --bootstrap
-docker buildx ls
 
 echo "Installing development tools in RHEL 8"
-sudo dnf groupinstall "Development Tools" -y
+sudo yum install git -y
 
 echo "Git clone the url"
 git clone $GIT_REPO_URL ./example
