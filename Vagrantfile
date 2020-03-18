@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
   config.vm.box = VM_BOX
   config.ssh.extra_args = ["-t", "cd /home/vagrant; bash --login"] #https://stackoverflow.com/questions/17864047/automatically-chdir-to-vagrant-directory-upon-vagrant-ssh
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = 2048  
+    vb.memory = 4096 
     vb.cpus = 4
   end
   config.vm.provision 'shell' do |s| 
