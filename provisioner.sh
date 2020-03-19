@@ -12,6 +12,7 @@ echo $DOCKER_HUB_PASSWORD
 echo $DOCKER_IMAGE_NAME
 echo $DOCKER_IMAGE_TAG
 echo $GIT_REPO_URL
+echo $GIT_BRANCH # Add in git branch feature 
 echo $TARGET_PLATFORM
 
 echo "Checking this OS image and kernel version"
@@ -111,7 +112,17 @@ if [ -d "example" ]; then
    echo "folder example exists. Delete it now."
   rm -rf ./example
 fi
-git clone $GIT_REPO_URL ./example
+if [ -z "$GIT_BRANCH" ]; then
+   echo "\$GIT_BRANCH is NULL set to default"
+   export GIT_BRANCH='master'
+else
+      echo "\$GIT_BRANCH is NOT NULL"
+fi
+git clone $GIT_REPO_URL ./example 
+cd /home/vagrant/example && git branch -a # list your repo
+cd /home/vagrant/example && git checkout $GIT_BRANCH # Change branch
+cd /home/vagrant/example && git branch # Confirm you are now working on that branch
+
 
 echo "Build Multiarch Image using Dockerfile and Buildx"
 cd /home/vagrant/example && docker buildx build -t $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG --platform=$TARGET_PLATFORM . --push

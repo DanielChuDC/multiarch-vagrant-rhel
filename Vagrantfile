@@ -26,6 +26,7 @@ Vagrant.configure(2) do |config|
      "DOCKER_IMAGE_NAME"=>ENV['DOCKER_IMAGE_NAME'], 
      "DOCKER_IMAGE_TAG"=>ENV['DOCKER_IMAGE_TAG'], 
      "GIT_REPO_URL"=>ENV['GIT_REPO_URL'],
+     "GIT_BRANCH"=>ENV['GIT_BRANCH'],
      "TARGET_PLATFORM"=>ENV['TARGET_PLATFORM']}
   end
 
