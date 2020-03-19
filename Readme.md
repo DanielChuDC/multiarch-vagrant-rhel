@@ -25,11 +25,15 @@ Check it out on https://github.com/DanielChuDC/multiarch-vagrant-rhel
    - if you want to use activation key, can try this https://access.redhat.com/solutions/3341191 , https://access.redhat.com/articles/1378093
 
 2. DOCKER HUB ACCOUNT
+3. git
+4. Vagrant
+
 
 ### Getting started with this project
 
 
 1. Rename `.env.example` to `.env` and modify `.env`
    - Add in the values 
-2. Make effect by `source .env`
+2. Install vagrant plugin for `.env` by run this command in terminal 
+   - `vagrant plugin install vagrant-env`
 3. Provision server by `vagrant up`
