@@ -13,7 +13,8 @@ Inspired by
 3. https://printhelloworld.de/posts/working-with-redhat-linux-in-vagrant/
 
 Supported Platform based on [qemu-user-static](https://github.com/multiarch/qemu-user-static)
-linux/amd64, linux/arm64, linux/riscv64, linux/ppc64le, linux/s390x, linux/386, linux/arm/v7, linux/arm/v6
+
+- linux/amd64, linux/arm64, linux/riscv64, linux/ppc64le, linux/s390x, linux/386, linux/arm/v7, linux/arm/v6
 
 Check it out on https://github.com/DanielChuDC/multiarch-vagrant-rhel
 
@@ -28,12 +29,10 @@ Check it out on https://github.com/DanielChuDC/multiarch-vagrant-rhel
 3. git
 4. Vagrant
 
-
 ### Getting started with this project
 
-
-1. Rename `.env.example` to `.env` and modify `.env`
-   - Add in the values 
-2. Install vagrant plugin for `.env` by run this command in terminal 
+1. Rename `example.env` to `.env` and modify `.env`
+   - Add in the values
+2. Install vagrant plugin for `.env` by run this command in terminal
    - `vagrant plugin install vagrant-env`
 3. Provision server by `vagrant up`
