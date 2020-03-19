@@ -107,6 +107,10 @@ echo "Installing development tools in RHEL 8"
 sudo yum install git -y
 
 echo "Git clone the url"
+if [ -d "example" ]; then
+   echo "folder example exists. Delete it now."
+  rm -rf ./example
+fi
 git clone $GIT_REPO_URL ./example
 
 echo "Build Multiarch Image using Dockerfile and Buildx"
