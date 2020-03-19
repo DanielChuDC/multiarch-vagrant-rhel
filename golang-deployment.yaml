@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: golang-outyet
+  labels:
+    app: golang-outyet
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+  - protocol: "TCP"
+    port: 8080
+    targetPort: 8080
+  type: LoadBalancer
+  selector:
+    app: golang-outyet
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang-outyet
+  labels:
+    app: golang-outyet
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: golang-outyet
+      tier: api
+  template:
+    metadata:
+      labels:
+        app: golang-outyet
+        tier: api
+    spec:
+      containers:
+      - name: golang-outyet
+        image: "docker.io/moxing9876/multi-arch-vagrant:3.0.7"
+        imagePullPolicy: IfNotPresent
+        name: golang-outyet
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        lifecycle:
+          preStop:
+            exec:
+              command: ["sh", "-c", "tail -f /dev/null"] # https://stackoverflow.com/questions/31870222/how-can-i-keep-a-container-running-on-kubernetes
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: golang-outyet
+  namespace: default
+  labels:
+    app: golang-outyet
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  to:
+    kind: Service
+    name: golang-outyet
+    weight: 100
+  port:
+    targetPort: 8080
+  wildcardPolicy: None
