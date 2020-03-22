@@ -2,13 +2,6 @@ This project aim to enable you to build multiarch with vagrant file
 
 **This branch specially made for testing loopback-cli.**
 
-### Get start with this project
-
-1. Modify `.env`
-   - Add in the value
-2. Make effect by `source .env`
-3. Provision server by `vagrant up`
-
 ### Prerequisite
 
 1. REDHAT DEVELOPER ACCOUNT
